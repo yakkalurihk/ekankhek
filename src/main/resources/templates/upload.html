@@ -1,0 +1,87 @@
+<!-- Page Header -->
+<div th:insert="header"></div>
+
+
+<section class="container">
+
+	<div class="row">
+		<div class="col-6">
+<script>
+
+	function uploadFile() {
+	  var file = $("#formFile").prop('files')[0];
+	  var title = $("#titleFile").val();
+	  var desc = $("#descriptionFile").val();
+	  console.log(title+" "+desc);
+	  var formdata = new FormData();
+	  formdata.append("file", file);
+	  formdata.append("title", title);
+	  formdata.append("descriptionFile", desc);
+	  console.log(formdata);
+	  var ajax = new XMLHttpRequest();
+	  ajax.upload.addEventListener("progress", progressHandler, false);
+	  ajax.addEventListener("load", completeHandler, false);
+	  ajax.addEventListener("error", errorHandler, false);
+	  ajax.addEventListener("abort", abortHandler, false);
+	  ajax.open("POST", "/upload"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+	  //use file_upload_parser.php from above url
+	  ajax.send(formdata);
+	}
+
+	function progressHandler(event) {
+	  console.log("Uploaded " + event.loaded + " bytes of " + event.total);
+	  $("#loaded_n_total").html("Uploaded " + event.loaded + " bytes of " + event.total);
+	  var percent = (event.loaded / event.total) * 100;
+	  $("#progressBar").val(Math.round(percent));
+	  $("#status").html(Math.round(percent) + "% uploaded");
+	}
+
+	function completeHandler(event) {
+		$("#status").innerHTML = event.target.responseText;
+		$("#progressBar").value = 0; //wil clear progress bar after successful upload
+		$("uploadfileForm").trigger("reset");
+	}
+
+	function errorHandler(event) {
+		$("#status").innerHTML = "Upload Failed";
+	}
+
+	function abortHandler(event) {
+		$("#status").innerHTML = "Upload Aborted";
+	}
+</script>
+<form method="POST" enctype="multipart/form-data" action="/upload" id="uploadfileForm">
+  <div class="row mb-3">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+    <div class="col-sm-10">
+      <input type="text" name="title" class="form-control" id="titleFile">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <textarea name="description" id="descriptionFile"></textarea>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Upload File</label>
+    <div class="col-sm-10">
+ 		 <input class="form-control" name="file" type="file" id="formFile">
+    </div>
+  </div>
+
+  
+  
+</form>
+<button type="button" class="btn btn-primary" onClick="uploadFile()">Upload</button>
+</div>
+<div class="col-6">
+<progress  id="progressBar" value="0" max="100" style="width:300px;"></progress>
+  <h3 id="status"></h3>
+  <p id="loaded_n_total"></p>
+		</div>
+	</div>
+</section>
+<!-- Page Footer -->
+<div th:insert="footer"></div>

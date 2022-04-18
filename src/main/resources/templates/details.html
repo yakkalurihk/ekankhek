@@ -1,0 +1,37 @@
+<section class="container">
+
+
+<div class="row">
+
+<div class="col-8">
+
+<table id="uploadsData" class="table">
+        <thead>
+        	<tr>
+        		<th> Title </th>
+        		<th> Description </th>
+        		<th> File Name </th>
+        		<th></th>
+        	</tr>
+        </thead>
+        <tbody>
+        	<tr th:each="file : ${fileData}">
+        		<td th:text="${file.title}"></td>
+        		<td th:text="${file.description}"></td>
+        		<td th:text="${file.filename}"></td>
+        		<td><form th:action="@{/delete}" method="POST">
+        			<input type="hidden" th:value="${file.id}" name="deleteFile"/>
+        			<input class="btn btn-danger" type="submit" value="Delete"/>
+        		</form></td>
+        	</tr>
+        </tbody>
+        
+ </table>      
+<script>
+
+</script>
+</div>
+
+</div>
+
+</section> 
