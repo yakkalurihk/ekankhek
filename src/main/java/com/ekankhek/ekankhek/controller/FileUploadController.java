@@ -4,6 +4,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ekankhek.ekankhek.domain.Datauploads;
 import com.ekankhek.ekankhek.domain.User;
+import com.ekankhek.ekankhek.helper.CommonHelper;
 import com.ekankhek.ekankhek.service.DatauploadsService;
 
 @Controller
@@ -34,7 +37,8 @@ public class FileUploadController {
 	
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public @ResponseBody Response<String> upload(HttpServletRequest request) {
-
+    	SimpleDateFormat sdf = CommonHelper.getDateFromat("MMHHmmss");
+    	String buffer = sdf.format((new Date()));
     	HashMap<String,String> map = new HashMap<String,String>();
 		try {
             boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -56,11 +60,11 @@ public class FileUploadController {
                 
                 InputStream stream = item.openStream();
                 if (!item.isFormField()) {
-                    String filename = item.getName();
+                    String filename = buffer+"_"+item.getName();
                     map.put(name, filename);
                     System.out.println(filename);
                     // Process the input stream
-                    OutputStream out = new FileOutputStream("./uploads/"+filename);
+                    OutputStream out = new FileOutputStream(CommonHelper.root_path+filename);
                     IOUtils.copy(stream, out);
                     stream.close();
                     out.close();

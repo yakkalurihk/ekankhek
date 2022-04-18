@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
+import com.ekankhek.ekankhek.helper.CommonHelper;
+
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class EkankhekApplication {
 
@@ -19,7 +21,7 @@ public class EkankhekApplication {
 
 	@PostConstruct
 	public void createFolder() {
-		String path = "./uploads/";
+		String path = CommonHelper.root_path;
 		File pathAsFile = new File(path);
 
 		if (!Files.exists(Paths.get(path))) {

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ekankhek.ekankhek.domain.Datauploads;
 import com.ekankhek.ekankhek.domain.User;
+import com.ekankhek.ekankhek.helper.CommonHelper;
 import com.ekankhek.ekankhek.service.DatauploadsService;
 
 @Controller
@@ -51,7 +52,7 @@ public class IndexController {
 			String filename = dp.getFilename();
 			dus.delete(dp);
 			
-			File f = new File("./uploads/"+filename);
+			File f = new File(CommonHelper.root_path+filename);
 			f.delete();
 		}catch(Exception e) {
 			return "redirect:/?q=Failed To Delete";
