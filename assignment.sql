@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: ekankhek
 -- ------------------------------------------------------
--- Server version	8.0.24
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,10 +28,11 @@ CREATE TABLE `datauploads` (
   `user` int DEFAULT NULL,
   `title` varchar(245) DEFAULT NULL,
   `description` text,
+  `sharecode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userfile_idx` (`user`),
   CONSTRAINT `userfile` FOREIGN KEY (`user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-18 22:28:40
+-- Dump completed on 2022-04-19 10:33:13

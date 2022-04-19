@@ -28,7 +28,15 @@ import com.ekankhek.ekankhek.domain.Datauploads;
 import com.ekankhek.ekankhek.domain.User;
 import com.ekankhek.ekankhek.helper.CommonHelper;
 import com.ekankhek.ekankhek.service.DatauploadsService;
-
+/**
+ * 
+ * Controller that handles the File Upload
+ * 
+ * @Params HttpServletRequest
+ * Returns ResponseBody - Response Class
+ * Upload Method
+ * 
+ * **/
 @Controller
 public class FileUploadController {
 	
@@ -92,6 +100,7 @@ public class FileUploadController {
         		data.setFilename(map.get("file"));
         		data.setTitle(map.get("title"));
         		data.setUser(user);
+        		data.setSharecode(CommonHelper.generateString(10));
         		dus.save(data);
         	}
         }catch(Exception e) {
@@ -104,6 +113,12 @@ public class FileUploadController {
 
 }
 
+/**
+ * Helper class used to return response 
+ * 
+ * Supports generic data
+ * 
+ * */
 class Response<T> {
     /** Boolean indicating if request succeeded **/
     private boolean status;

@@ -37,6 +37,7 @@ public class IndexController {
 			map.addAttribute("username", user.getName());
 			List<Datauploads> files = dus.findByUsername(user);
 			map.addAttribute("fileData", files);
+			map.addAttribute("base_url", CommonHelper.base_url);
 		}catch(Exception e) {}
 		return "index";
 	}

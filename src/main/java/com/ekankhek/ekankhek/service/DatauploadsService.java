@@ -11,4 +11,5 @@ public interface DatauploadsService {
 	boolean delete(Datauploads datauploads);
 	List<Datauploads> findByUsername(User user);
 	Datauploads findById(Long id);
+	Datauploads findByCode(String code);
 }
