@@ -22,6 +22,7 @@ public class Datauploads {
 	
 	String title;
 	String description;
+	String sharecode;
 	
 	public Long getId() {
 		return id;
@@ -52,5 +53,11 @@ public class Datauploads {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getSharecode() {
+		return sharecode;
+	}
+	public void setSharecode(String sharecode) {
+		this.sharecode = sharecode;
 	}
 }

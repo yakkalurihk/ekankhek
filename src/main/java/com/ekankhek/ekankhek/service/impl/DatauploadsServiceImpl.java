@@ -45,4 +45,10 @@ public class DatauploadsServiceImpl implements DatauploadsService{
 		return dataRepo.getById(id);
 	}
 
+	@Override
+	public Datauploads findByCode(String code) {
+		// TODO Auto-generated method stub
+		return dataRepo.findByCode(code);
+	}
+
 }

@@ -18,6 +18,9 @@ public interface DatauploadsREpository extends JpaRepository<Datauploads, Long>{
 	@Query("from Datauploads cg where cg.user = ?1")
 	List<Datauploads> findByUsername(User user);
 	
+	@Transactional
+	@Query("from Datauploads cg where cg.sharecode = ?1")
+	Datauploads findByCode(String code);
 }
 
 
