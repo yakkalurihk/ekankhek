@@ -36,7 +36,8 @@ Available Users with Passwords: # This will be available after the MySQl file Im
 - Login & Logout
 - File Upload with Title and Description
     - Shows progress of upload
-- List of file uploaded , specific to the individual users
+- List of file uploaded , specific to the individual users 
+    -- **Supports Large File Uploads**
 - Delete the file uploaded
 - Share the File with link
 - Download the File
