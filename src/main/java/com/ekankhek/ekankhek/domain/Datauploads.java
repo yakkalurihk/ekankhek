@@ -23,6 +23,7 @@ public class Datauploads {
 	String title;
 	String description;
 	String sharecode;
+	boolean linkactive;
 	
 	public Long getId() {
 		return id;
@@ -59,5 +60,11 @@ public class Datauploads {
 	}
 	public void setSharecode(String sharecode) {
 		this.sharecode = sharecode;
+	}
+	public boolean isLinkactive() {
+		return linkactive;
+	}
+	public void setLinkactive(boolean linkactive) {
+		this.linkactive = linkactive;
 	}
 }

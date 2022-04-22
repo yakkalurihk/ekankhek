@@ -38,7 +38,9 @@ public class IndexController {
 			List<Datauploads> files = dus.findByUsername(user);
 			map.addAttribute("fileData", files);
 			map.addAttribute("base_url", CommonHelper.base_url);
-		}catch(Exception e) {}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return "index";
 	}
 	@RequestMapping("/upload.html")

@@ -1,7 +1,6 @@
 package com.ekankhek.ekankhek.helper;
 
 import java.text.SimpleDateFormat;
-import java.util.random.RandomGenerator;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
